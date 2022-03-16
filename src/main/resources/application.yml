@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    username: root
+    url: jdbc:mysql://localhost:3306/clinicals?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+    password: Ikejianwa@01
+server:
+  servlet:
+    context-path: /clinicalservices
+logging:
+  file:
+    name: logs/application.log
+    max-history: 5
+    max-size: 2MB    
