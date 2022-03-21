@@ -33,16 +33,19 @@ public class ClinicalController {
 	@RequestMapping(value = "/clinicals", method = RequestMethod.POST)//same as @PostMapping("/clinicals") 
 	public ClinicalData saveClinicalData(@RequestBody ClinicalDataRequest clinicalDataRequest) {
 		Patient patient = patientRepository.findById(clinicalDataRequest.getPatientId()).get();
-		ClinicalData data = new ClinicalData();
-		data.setComponentName(clinicalDataRequest.getComponentName());
-		data.setComponentValue(clinicalDataRequest.getComponentValue());
-		data.setPatient(patient);
+		
+		ClinicalData data = ClinicalData.builder()
+				       .componentName(clinicalDataRequest.getComponentName())
+				       .componentValue(clinicalDataRequest.getComponentValue())
+				       .patient(patient).build();
+		
 		return repository.save(data);
 	}
 
 	@RequestMapping(value = "/clinicals/{patientId}/{componentName}", method = RequestMethod.GET)
 	public List<ClinicalData> getClinicalData(@PathVariable("patientId") int patientId,
 			@PathVariable("componentName") String componentName) {
+		
 		return repository.findByPatientIdAndComponentNameOrderByMeasuredDateTime(patientId, componentName);
 	}
 

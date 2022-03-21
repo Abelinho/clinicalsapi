@@ -1,32 +1,15 @@
 package com.iqvia.clinicals.api.restcontrollers.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ClinicalDataRequest {
 	private String componentName;
 	private String componentValue;
 	private int patientId;
-
-	public String getComponentName() {
-		return componentName;
-	}
-
-	public void setComponentName(String componentName) {
-		this.componentName = componentName;
-	}
-
-	public int getPatientId() {
-		return patientId;
-	}
-
-	public void setPatientId(int patientId) {
-		this.patientId = patientId;
-	}
-
-	public String getComponentValue() {
-		return componentValue;
-	}
-
-	public void setComponentValue(String componentValue) {
-		this.componentValue = componentValue;
-	}
 
 }

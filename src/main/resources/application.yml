@@ -1,4 +1,9 @@
 spring:
+  profiles:
+    active: heroku
+---
+spring:
+  profiles: local
   datasource:
     username: root
     url: jdbc:mysql://localhost:3306/clinicals?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
@@ -11,3 +16,19 @@ logging:
     name: logs/application.log
     max-history: 5
     max-size: 2MB    
+    
+---
+spring:
+  profiles: heroku
+  datasource:
+    username: bea1595eaa5eda
+    url: jdbc:mysql://us-cdbr-east-05.cleardb.net/heroku_ce0ae17d77a1407?reconnect=true
+    password: b57a5d31
+server:
+  servlet:
+    context-path: /clinicalservices
+logging:
+  file:
+    name: logs/application.log
+    max-history: 5
+    max-size: 2MB

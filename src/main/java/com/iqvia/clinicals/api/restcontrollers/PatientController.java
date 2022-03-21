@@ -35,16 +35,19 @@ public class PatientController {
 
 	@RequestMapping(value = "/patients/{id}", method = RequestMethod.GET)
 	public Patient getPatient(@PathVariable("id") int id) {
+		
 		return patientRepository.findById(id).get();
 	}
 
 	@RequestMapping(value = "/patients", method = RequestMethod.GET)
 	public List<Patient> getPatients() {
+		
 		return patientRepository.findAll();
 	}
 
 	@RequestMapping(value = "/patients/analyze/{id}", method = RequestMethod.GET)
 	public Patient analyse(@PathVariable("id") int id) {
+		
 		Patient patient = patientRepository.findById(id).get();
 		List<ClinicalData> clinicalData = new ArrayList<>(patient.getClinicalData());
 		for (ClinicalData eachEntry : clinicalData) {
